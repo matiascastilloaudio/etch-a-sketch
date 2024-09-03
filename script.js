@@ -15,7 +15,12 @@ function grid() {
         pixels.classList.add("pixels");
         pixels.style.width = `${pixelSize}px`;
         pixels.style.height = `${pixelSize}px`;
+        pixels.dataset.opacity = 0;
         container.appendChild(pixels);
+
+        pixels.addEventListener("mouseenter", () => {
+            pixels.style.backgroundColor = "black";
+        });
 
         blackInkBtn.addEventListener("click", () => {
             pixels.addEventListener("mouseenter", () => {
@@ -31,7 +36,7 @@ function grid() {
 
         darkeningInkBtn.addEventListener("click", () => {
             pixels.addEventListener("mouseenter", () => {
-                pixels.style.backgroundColor = "grey";
+                pixels.style.backgroundColor = progDarkening(pixels);
             });
         });
     }
@@ -55,6 +60,16 @@ function randomBgColor() {
     let x = Math.floor(Math.random() * 256);
     let y = Math.floor(Math.random() * 256);
     let z = Math.floor(Math.random() * 256);
-    let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+    let bgColor = `rgb(${x}, ${y}, ${z})`;
     return bgColor;
-  }
+}
+
+function progDarkening(pixels) {
+    let currentOpacity = parseFloat(pixels.dataset.opacity);
+    let newOpacity = currentOpacity;
+    for (let i = 0; i < 1; i += 0.1) {
+        newOpacity = Math.min(currentOpacity + 0.1, 1);
+        pixels.dataset.opacity = newOpacity;
+    }
+    return `rgba(0, 0, 0, ${newOpacity})`;
+}
