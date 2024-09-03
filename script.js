@@ -46,9 +46,9 @@ function grid() {
 grid();
 
 resizeBtn.addEventListener("click", () => {
-    num = prompt("Input desired resolution:");
+    num = prompt("Enter a number between 1 and 100");
     num = parseInt(num);
-    if (typeof num == "number" && Number.isInteger(num)) {
+    if (num > 0 && num < 100 && typeof num == "number" && Number.isInteger(num)) {
         res = num;
         grid();
     } else {
