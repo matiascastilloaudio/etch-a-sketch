@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resize {
+    margin: 20px;
+}
+
+.container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+}
+
+.pixels {
+    box-sizing: border-box;
+}
