@@ -5,8 +5,12 @@ body {
     align-items: center;
 }
 
-.resize {
-    margin: 20px;
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .container {

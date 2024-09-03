@@ -1,5 +1,8 @@
 const container = document.querySelector(".container");
-
+const resizeBtn = document.querySelector(".resize");
+const blackInkBtn = document.querySelector(".blackInk");
+const colorInkBtn = document.querySelector(".colorInk");
+const darkeningInkBtn = document.querySelector(".darkeningInk");
 let res = 16;
 
 function grid() {
@@ -14,16 +17,28 @@ function grid() {
         pixels.style.height = `${pixelSize}px`;
         container.appendChild(pixels);
 
-        pixels.addEventListener("mouseenter", () => {
-            pixels.style.backgroundColor = "black";
+        blackInkBtn.addEventListener("click", () => {
+            pixels.addEventListener("mouseenter", () => {
+                pixels.style.backgroundColor = "black";
+            });
+        });
+
+        colorInkBtn.addEventListener("click", () => {
+            pixels.addEventListener("mouseenter", () => {
+                pixels.style.backgroundColor = randomBgColor();
+            });
+        });
+
+        darkeningInkBtn.addEventListener("click", () => {
+            pixels.addEventListener("mouseenter", () => {
+                pixels.style.backgroundColor = "grey";
+            });
         });
     }
 
 }
 
 grid();
-
-const resizeBtn = document.querySelector(".resize");
 
 resizeBtn.addEventListener("click", () => {
     num = prompt("Input desired resolution:");
@@ -35,3 +50,11 @@ resizeBtn.addEventListener("click", () => {
         alert("Enter a valid number");
     }
 });
+
+function randomBgColor() {
+    let x = Math.floor(Math.random() * 256);
+    let y = Math.floor(Math.random() * 256);
+    let z = Math.floor(Math.random() * 256);
+    let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+    return bgColor;
+  }
